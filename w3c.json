@@ -1,8 +1,7 @@
 {
-  "group": 45211,
+  "group": "cg/wicg",
   "contacts": [
-    "carine"
+    "noamr"
   ],
-  "shortName": "longtasks",
-  "repo-type": "rec-track"
+  "repo-type": "cg-report"
 }
