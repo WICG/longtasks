@@ -304,12 +304,14 @@ Report long tasks {#report-long-tasks}
 
         For each [=top-level browsing context=] |topmostBC| in |top-level browsing contexts|:
 
-        1. Add |topmostBC|'s [=active document=]'s [=relevant Realm=] to |destinationRealms|.
-        1. Let |descendantBCs| be |topmostBC|'s [=active document=]'s [=list of the descendant browsing contexts=].
-        1. Let |document| be |descendantBC|'s [=active document=].
-        1. For each |descendantBC| in |descendantBCs|, add (|document|'s [=relevant Realm=], |document|'s [=relevant settings object=]'s [=environment settings object/cross-origin isolated capability=]) to |destinationRealms|.
+        1. Let |topDocument| be |topmostBC|'s [=active document=].
+        1. Add (|topDocument|'s [=relevant Realm=], |topDocument|'s [=relevant settings object=]'s [=environment settings object/cross-origin isolated capability=]) to |destinationRealms|.
+        1. Let |descendantBCs| be |topDocument|'s [=list of the descendant browsing contexts=].
+        1. For each |descendantBC| in |descendantBCs|:
+            1. Let |document| be |descendantBC|'s [=active document=].
+            1. Add (|document|'s [=relevant Realm=], |document|'s [=relevant settings object=]'s [=environment settings object/cross-origin isolated capability=]) to |destinationRealms|.
 
-    1. A user agent may remove some [=JavaScript Realms=] from |destinationRealms|.
+    1. A user agent may remove some pairs from |destinationRealms|.
 
     Note: this removal could be used to avoid reporting long tasks for [=JavaScript Realms=] that the user agent handles in a separate process. However, this concept is not specified precisely.
 
